@@ -1,6 +1,6 @@
 #pragma once
-#include "FrogModel.h"
-#include "CarModel.h"
+#include "FrogObject.h"
+#include "CarObject.h"
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 
@@ -8,9 +8,19 @@ class GameLogic
 {
 public:
 	GameLogic();
-	std::unordered_map<std::string, Model*> Update(); //póŸniej tê funkcjê porozdzielaæ na update, getModel itd
+	void UpdateLogic();
+	std::unordered_map<std::string, Object*> GetAllObjects(); //póŸniej tê funkcjê porozdzielaæ na update, getModel itd
+	bool IsTimeToGenerateCar();
+	void GenerateCar();
+	void InputControl();
 
 private:
-	Model* frogModel;
-	std::unordered_map<std::string, Model*> allModels;
+	Object* frogObject;
+	std::unordered_map<std::string, Object*> allObjects;
+
+	sf::Clock timer;
+	sf::Time elapsedTime;
+
+	bool leftKeyPressed;
+	bool rightKeyPressed;
 };

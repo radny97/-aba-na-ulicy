@@ -2,30 +2,60 @@
 
 GameLogic::GameLogic()
 {
-	this->frogModel = new FrogModel(100,100);
-	this->allModels.insert(std::make_pair("0", this->frogModel));
-	Model* carModel = new CarModel(200, 200);
-	this->allModels.insert(std::make_pair("1", carModel));
+	this->frogObject = new FrogObject(100,100);
+	this->allObjects.insert(std::make_pair(this->frogObject->GetStringWithTypeAndID(), this->frogObject));
+
 }
 
-std::unordered_map<std::string, Model*> GameLogic::Update()
+void GameLogic::UpdateLogic()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+	if (IsTimeToGenerateCar())
 	{
-		this->frogModel->posX += 20;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
-	{
-		this->frogModel->posX -= 20;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
-	{
-		this->frogModel->posY -= 20;
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
-	{
-		this->frogModel->posY += 20;
+		GenerateCar();
 	}
 
-	return this->allModels;
+	InputControl();
+
+}
+
+std::unordered_map<std::string, Object*> GameLogic::GetAllObjects()
+{
+	return this->allObjects;
+}
+
+void GameLogic::InputControl()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && !this->leftKeyPressed)
+	{
+		this->frogObject->posX -= 50;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKeyPressed)
+	{
+		this->frogObject->posX += 50;
+	}
+
+	this->leftKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left);
+	this->rightKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);
+}
+
+bool GameLogic::IsTimeToGenerateCar()
+{
+	srand(time(0));
+	int randomNumber = rand() % 3 + 1;
+
+	this->elapsedTime = this->timer.getElapsedTime();
+
+	if (this->elapsedTime.asSeconds() > randomNumber)
+	{
+		this->timer.restart();
+		return true;
+	}	
+	else
+		return false;
+}
+
+void GameLogic::GenerateCar()
+{
+	Object* carObject = new CarObject(200, 200);
+	this->allObjects.insert(std::make_pair(carObject->GetStringWithTypeAndID(), carObject));
 }

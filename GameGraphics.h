@@ -1,15 +1,18 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
-#include "FrogModel.h"
-#include "CarModel.h"
-#include "FrogModelGraphics.h"
-#include "CarModelGraphics.h"
+#include <regex>
+#include "FrogObject.h"
+#include "CarObject.h"
+#include "FrogObjectSprite.h"
+#include "CarObjectSprite.h"
 
 class GameGraphics
 {
 public:
 	GameGraphics();
-	void Update(sf::RenderWindow* window, std::unordered_map<std::string, Model*> allModels);
+	void Update(sf::RenderWindow* window, std::unordered_map<std::string, Object*> allModels);
+
+	std::list<ObjectSprite*> listOfObjectSprites;
 
 };

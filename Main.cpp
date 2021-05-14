@@ -10,7 +10,7 @@ int main()
 	stateMachine.SetState(new GameState(&stateMachine)); //new Menu    ale teraz niech od razu przechodzi do gry
 
 	sf::Clock timer;
-	sf::Time elapsed;
+	sf::Time elapsedTime;
 
 	while (window.isOpen())
 	{
@@ -21,9 +21,9 @@ int main()
 				window.close();
 		}
 
-		elapsed = timer.getElapsedTime();
+		elapsedTime = timer.getElapsedTime();
 
-		if (elapsed.asMicroseconds() > 16666)
+		if (elapsedTime.asMicroseconds() > 16666)
 		{
 			window.clear();
 

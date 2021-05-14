@@ -1,13 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class ModelGraphics : public sf::Sprite
+class ObjectSprite : public sf::Sprite
 {
 public:
 	float posX;
 	float posY;
+	int ID;
 	sf::Texture* texture;
 	
-	ModelGraphics();
+	ObjectSprite();
 	void Load(std::string filename);
 };

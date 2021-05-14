@@ -13,17 +13,12 @@ void GameState::Initialize(sf::RenderWindow* window)
 
 void GameState::Update(sf::RenderWindow* window)
 {
-	//this->gameLogic->Update();
-	this->gameGraphics->Update(window, this->gameLogic->Update());
-
+	this->gameLogic->UpdateLogic();
+	this->gameGraphics->Update(window, this->gameLogic->GetAllObjects());
 }
-
-//void GameState::Render(sf::RenderWindow* window)
-//{
-	
-//}
 
 void GameState::Destroy(sf::RenderWindow* window)
 {
-	
+	delete this->gameLogic;
+	delete this->gameGraphics;
 }

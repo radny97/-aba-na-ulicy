@@ -37,6 +37,12 @@
     <Filter Include="Header Files\Graphics">
       <UniqueIdentifier>{33c5eedb-c52a-4aa7-ad97-27a9ffdcffa3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entities Sprites">
+      <UniqueIdentifier>{b9700529-988b-4ded-959c-ba59521007bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities Sprites">
+      <UniqueIdentifier>{13f5492b-83a1-4956-b4ab-1975ff8d9968}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -51,23 +57,23 @@
     <ClCompile Include="GameLogic.cpp">
       <Filter>Source Files\Logic</Filter>
     </ClCompile>
-    <ClCompile Include="FrogModel.cpp">
+    <ClCompile Include="FrogObject.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="FrogModelGraphics.cpp">
+    <ClCompile Include="Object.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
+    <ClCompile Include="CarObject.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="ModelGraphics.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="CarObjectSprite.cpp">
+      <Filter>Source Files\Entities Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="CarModel.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="FrogObjectSprite.cpp">
+      <Filter>Source Files\Entities Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="CarModelGraphics.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="ObjectSprite.cpp">
+      <Filter>Source Files\Entities Sprites</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,23 +92,23 @@
     <ClInclude Include="GameLogic.h">
       <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="FrogModel.h">
+    <ClInclude Include="FrogObject.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="FrogModelGraphics.h">
+    <ClInclude Include="Object.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Model.h">
+    <ClInclude Include="CarObject.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="ModelGraphics.h">
-      <Filter>Header Files\Entities</Filter>
+    <ClInclude Include="ObjectSprite.h">
+      <Filter>Header Files\Entities Sprites</Filter>
     </ClInclude>
-    <ClInclude Include="CarModel.h">
-      <Filter>Header Files\Entities</Filter>
+    <ClInclude Include="FrogObjectSprite.h">
+      <Filter>Header Files\Entities Sprites</Filter>
     </ClInclude>
-    <ClInclude Include="CarModelGraphics.h">
-      <Filter>Header Files\Entities</Filter>
+    <ClInclude Include="CarObjectSprite.h">
+      <Filter>Header Files\Entities Sprites</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

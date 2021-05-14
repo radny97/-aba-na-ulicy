@@ -145,28 +145,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CarModel.cpp" />
-    <ClCompile Include="CarModelGraphics.cpp" />
-    <ClCompile Include="FrogModel.cpp" />
-    <ClCompile Include="FrogModelGraphics.cpp" />
+    <ClCompile Include="CarObject.cpp" />
+    <ClCompile Include="CarObjectSprite.cpp" />
+    <ClCompile Include="FrogObject.cpp" />
+    <ClCompile Include="FrogObjectSprite.cpp" />
     <ClCompile Include="GameGraphics.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameState.cpp" />
-    <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ModelGraphics.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObjectSprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ApplicationState.h" />
-    <ClInclude Include="CarModel.h" />
-    <ClInclude Include="CarModelGraphics.h" />
-    <ClInclude Include="FrogModel.h" />
-    <ClInclude Include="FrogModelGraphics.h" />
+    <ClInclude Include="CarObject.h" />
+    <ClInclude Include="CarObjectSprite.h" />
+    <ClInclude Include="FrogObject.h" />
+    <ClInclude Include="FrogObjectSprite.h" />
     <ClInclude Include="GameGraphics.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameState.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="ModelGraphics.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjectSprite.h" />
     <ClInclude Include="StateMachine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
