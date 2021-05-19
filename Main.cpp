@@ -1,10 +1,11 @@
 ﻿#include <SFML/Graphics.hpp>
 #include "GameState.h"
+#include "Utilities.h"
 
 int main()
 {
 	StateMachine stateMachine;
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "Zaba na ulicy", sf::Style::Default);
+	sf::RenderWindow window(sf::VideoMode(Utilities::screenResolutionX, Utilities::screenResolutionY), "Zaba na ulicy", sf::Style::Default);
 
 	stateMachine.SetWindow(&window);
 	stateMachine.SetState(new GameState(&stateMachine)); //new Menu    ale teraz niech od razu przechodzi do gry
@@ -28,7 +29,6 @@ int main()
 			window.clear();
 
 			stateMachine.Update();
-			//stateMachine.Render();
 
 			window.display();
 			timer.restart();

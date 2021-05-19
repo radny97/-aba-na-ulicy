@@ -4,5 +4,9 @@
 class FrogObjectSprite : public ObjectSprite
 {
 public:
-	FrogObjectSprite();
+	FrogObjectSprite()
+	{
+		this->texture = new sf::Texture();
+		this->Load("GraphicsTest/frog.png");
+	};
 };

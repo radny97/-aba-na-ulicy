@@ -1,5 +1,5 @@
 #include "CarObjectSprite.h"
 
-CarObjectSprite::CarObjectSprite()
-{
-}
+//CarObjectSprite::CarObjectSprite()
+//{
+//}

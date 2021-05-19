@@ -8,6 +8,7 @@ public:
 	float posY;
 	int ID;
 	sf::Texture* texture;
+	std::string filename;
 	
 	ObjectSprite();
 	void Load(std::string filename);

@@ -75,6 +75,9 @@
     <ClCompile Include="ObjectSprite.cpp">
       <Filter>Source Files\Entities Sprites</Filter>
     </ClCompile>
+    <ClCompile Include="Utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameState.h">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="CarObjectSprite.h">
       <Filter>Header Files\Entities Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

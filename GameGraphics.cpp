@@ -10,7 +10,11 @@ void GameGraphics::Update(std::unordered_map<int, Object*> allModels)
 	this->spritesToDelete = this->allObjectSprites;
 
 	MapAllObjectsToObjectSprites(allModels);
-	DeleteSpritesOfObjectsThatNoLongerExist();
+
+	if (!this->spritesToDelete.empty())
+	{
+		DeleteSpritesOfObjectsThatNoLongerExist();
+	}
 }
 
 void GameGraphics::MapAllObjectsToObjectSprites(std::unordered_map<int, Object*> allObjects)
@@ -80,9 +84,11 @@ void GameGraphics::DeleteSpritesOfObjectsThatNoLongerExist()
 {
 	for (auto& iterator : this->spritesToDelete)
 	{
-		delete this->allObjectSprites.at(iterator.second->ID);
+		ObjectSprite *toDelete = this->allObjectSprites.at(iterator.second->ID);
 		this->allObjectSprites.erase(iterator.second->ID);
+		delete toDelete;
 	}
+	this->spritesToDelete.clear();
 }
 
 void GameGraphics::Render(sf::RenderWindow* window)

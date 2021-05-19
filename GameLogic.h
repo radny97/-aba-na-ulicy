@@ -10,13 +10,17 @@ public:
 	GameLogic();
 	void UpdateLogic();
 	std::unordered_map<int, Object*> GetAllObjects();
+	void UpdateCar();
+	void AddCarToDeleteListIfItDroveOfPlayground(Object* car);
 	bool IsTimeToGenerateCar();
 	void GenerateCar();
 	void InputControl();
+	void DeleteObjects();
 
 private:
 	Object* frogObject;
 	std::unordered_map<int, Object*> allObjects;
+	std::unordered_map<int, Object*> objectsToDelete;
 
 	sf::Clock timer;
 	sf::Time elapsedTime;

@@ -9,6 +9,8 @@ GameLogic::GameLogic()
 
 void GameLogic::UpdateLogic()
 {
+	UpdateCar();
+
 	if (IsTimeToGenerateCar())
 	{
 		GenerateCar();
@@ -16,6 +18,7 @@ void GameLogic::UpdateLogic()
 
 	InputControl();
 
+	DeleteObjects();
 }
 
 std::unordered_map<int, Object*> GameLogic::GetAllObjects()
@@ -38,6 +41,18 @@ void GameLogic::InputControl()
 	this->rightKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);
 }
 
+void GameLogic::UpdateCar()
+{
+	for (auto& iterator : this->allObjects)
+	{
+		AddCarToDeleteListIfItDroveOfPlayground(iterator.second);
+		if (iterator.second->type == "car")
+		{
+			iterator.second->posY += 4;
+		}
+	}
+}
+
 bool GameLogic::IsTimeToGenerateCar()
 {
 	srand(time(0));
@@ -56,6 +71,25 @@ bool GameLogic::IsTimeToGenerateCar()
 
 void GameLogic::GenerateCar()
 {
-	Object* carObject = new CarObject(200, 200);
+	Object* carObject = new CarObject(350, 0);
 	this->allObjects.insert(std::make_pair(carObject->ID, carObject));
+}
+
+void GameLogic::AddCarToDeleteListIfItDroveOfPlayground(Object *car)
+{
+	if (car->posY < 0 || car->posY>720)
+	{
+		this->objectsToDelete.insert(std::make_pair(car->ID, car));
+	}
+}
+
+void GameLogic::DeleteObjects()
+{
+	for (auto& iterator : this->objectsToDelete)
+	{
+		Object* toDelete = this->allObjects.at(iterator.second->ID);
+		this->allObjects.erase(iterator.second->ID);
+		delete toDelete;
+	}
+	this->objectsToDelete.clear();
 }

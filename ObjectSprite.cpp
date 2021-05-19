@@ -3,7 +3,7 @@
 ObjectSprite::ObjectSprite()
 {
 	this->texture = new sf::Texture();
-	this->Load("player.png");
+	this->Load("GraphicsTest/car from bottom.png");
 }
 
 void ObjectSprite::Load(std::string filename)

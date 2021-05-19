@@ -4,6 +4,10 @@
 class CarObjectSprite : public ObjectSprite
 {
 public:
-	CarObjectSprite();
+	CarObjectSprite()
+	{
+		this->texture = new sf::Texture();
+		this->Load("GraphicsTest/car from bottom.png");
+	};
 
 };

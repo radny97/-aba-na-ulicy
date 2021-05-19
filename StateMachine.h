@@ -33,13 +33,6 @@ public:
 			this->state->Update(this->window);
 		}
 	}
-	void Render()
-	{
-		if (this->state != NULL)
-		{
-			this->state->Render(this->window);
-		}
-	}
 	~StateMachine()
 	{
 		if (this->state != NULL)

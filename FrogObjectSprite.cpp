@@ -1,5 +1,5 @@
 #include "FrogObjectSprite.h"
 
-FrogObjectSprite::FrogObjectSprite()
-{
-}
+//FrogObjectSprite::FrogObjectSprite()
+//{
+//}
