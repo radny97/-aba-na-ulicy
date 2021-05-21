@@ -4,8 +4,8 @@
 class ObjectSprite : public sf::Sprite
 {
 public:
-	float posX;
-	float posY;
+	int posX;
+	int posY;
 	int ID;
 	sf::Texture* texture;
 	std::string filename;

@@ -2,23 +2,40 @@
 
 GameLogic::GameLogic()
 {
-	this->frogObject = new FrogObject(100,100);
+	this->playground = new Playground();
+
+	this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
+
+	this->frogObject = new FrogObject(
+		this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX,
+		this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateY
+	);
+
 	this->allObjects.insert(std::make_pair(this->frogObject->ID, this->frogObject));
 
 }
 
 void GameLogic::UpdateLogic()
 {
+	//bedzie coœ w rodzaju animacji, które bêd¹ polegaæ na zmianie "stanu" obiektu, po up³yniêciu czasu mierzonego tutaj
 	UpdateCar();
 
 	if (IsTimeToGenerateCar())
 	{
-		GenerateCar();
+		//generowanie dla ka¿dego toru oddzielnie
+		for (auto const& track : this->playground->tracks)
+		{
+			GenerateCar(track);
+		}
 	}
 
 	InputControl();
 
-	DeleteObjects();
+	if (!this->objectsToDelete.empty())
+	{
+		DeleteObjects();
+	}
+
 }
 
 std::unordered_map<int, Object*> GameLogic::GetAllObjects()
@@ -30,11 +47,19 @@ void GameLogic::InputControl()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && !this->leftKeyPressed)
 	{
-		this->frogObject->posX -= 50;
+		if (this->positionOfFrogIterator > 0)
+		{
+			this->positionOfFrogIterator--;
+			this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKeyPressed)
 	{
-		this->frogObject->posX += 50;
+		if (this->positionOfFrogIterator < this->playground->frogStandingPoints.size()-1)
+		{
+			this->positionOfFrogIterator++;
+			this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+		}
 	}
 
 	this->leftKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left);
@@ -48,7 +73,7 @@ void GameLogic::UpdateCar()
 		AddCarToDeleteListIfItDroveOfPlayground(iterator.second);
 		if (iterator.second->type == "car")
 		{
-			iterator.second->posY += 4;
+			iterator.second->Move(mediumVelocity);
 		}
 	}
 }
@@ -69,15 +94,15 @@ bool GameLogic::IsTimeToGenerateCar()
 		return false;
 }
 
-void GameLogic::GenerateCar()
+void GameLogic::GenerateCar(Track track)
 {
-	Object* carObject = new CarObject(350, 0);
+	Object* carObject = new CarObject(track.beginingOfTrack.coordinateX, track.beginingOfTrack.coordinateY, track.fromDownToUp);
 	this->allObjects.insert(std::make_pair(carObject->ID, carObject));
 }
 
 void GameLogic::AddCarToDeleteListIfItDroveOfPlayground(Object *car)
 {
-	if (car->posY < 0 || car->posY>720)
+	if (car->posY < -Utilities::carImageSizeY || car->posY > Utilities::screenResolutionY + Utilities::carImageSizeY)
 	{
 		this->objectsToDelete.insert(std::make_pair(car->ID, car));
 	}

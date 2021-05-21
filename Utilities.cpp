@@ -8,3 +8,5 @@ int Utilities::frogImageSizeY = 75;
 
 int Utilities::carImageSizeX = 85;
 int Utilities::carImageSizeY = 105;
+
+float Utilities::trackGrade = 1.85;

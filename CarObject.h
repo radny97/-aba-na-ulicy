@@ -5,11 +5,15 @@ class CarObject : public Object
 {
 public:
 	CarObject() {};
-	CarObject(float x, float y)
+	CarObject(int x, int y, bool fromDownToUp)
 	{
-		this->posX = x;
-		this->posY = y;
+		this->posX = x - (Utilities::carImageSizeX / 2);
+		this->posY = y - (Utilities::carImageSizeY / 2);
 		this->type = "car";
 		this->ID = GenerateID();
+		this->fromDownToUp = fromDownToUp;
 	}
+	void Move(int velocity) override;
+
+	bool fromDownToUp;
 };
