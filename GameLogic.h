@@ -16,7 +16,7 @@ public:
 	std::unordered_map<int, Object*> GetAllObjects();
 	void UpdateCar();
 	void AddCarToDeleteListIfItDroveOfPlayground(Object* car);
-	bool IsTimeToGenerateCar();
+	bool IsTimeToGenerateCar(Track* track);
 	void GenerateCar(Track track);
 	void InputControl();
 	void DeleteObjects();
@@ -35,12 +35,13 @@ private:
 	std::unordered_map<int, Object*> allObjects;
 	std::unordered_map<int, Object*> objectsToDelete;
 
-	sf::Clock timer;
-	sf::Time elapsedTime;
+	//sf::Clock timer;
+	//sf::Time elapsedTime;
 
 	bool leftKeyPressed;
 	bool rightKeyPressed;
 	int positionOfFrogIterator;
 
 	SubStateOfGame subState;
+	time_t* seed;
 };

@@ -4,6 +4,8 @@
 
 int main()
 {
+	srand((unsigned)time(0));
+
 	StateMachine stateMachine;
 	sf::RenderWindow window(sf::VideoMode(Utilities::screenResolutionX, Utilities::screenResolutionY), "Zaba na ulicy", sf::Style::Default);
 

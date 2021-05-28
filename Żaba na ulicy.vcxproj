@@ -163,6 +163,7 @@
     <ClCompile Include="PlaygroundGraphics.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="ScoreText.cpp" />
+    <ClCompile Include="Track.cpp" />
     <ClCompile Include="TrackSprite.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
@@ -187,6 +188,7 @@
     <ClInclude Include="Point.h" />
     <ClInclude Include="ScoreText.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="Track.h" />
     <ClInclude Include="TrackSprite.h" />
     <ClInclude Include="Utilities.h" />
   </ItemGroup>

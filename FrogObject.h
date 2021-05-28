@@ -14,4 +14,6 @@ public:
 	}
 	bool CheckIfCollisionPointIsInBounds(Point point) override;
 	void SetPosX(float x) override;
+
+
 };

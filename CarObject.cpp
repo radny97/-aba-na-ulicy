@@ -4,17 +4,17 @@
 //{
 //}
 
-void CarObject::Move(int velocity)
+void CarObject::Move()
 {
 	if (this->fromDownToUp == false)
 	{
-		this->posY += (sqrt(velocity) * Utilities::trackGrade);
-		this->posX -= (sqrt(velocity) * 1);
+		this->posY += (sqrt(this->velocity) * Utilities::trackGrade);
+		this->posX -= (sqrt(this->velocity) * 1);
 	}
 	else
 	{
-		this->posY -= (sqrt(velocity) * Utilities::trackGrade);
-		this->posX += (sqrt(velocity) * 1);
+		this->posY -= (sqrt(this->velocity) * Utilities::trackGrade);
+		this->posX += (sqrt(this->velocity) * 1);
 	}
 	UpdateCollisionPoints();
 }

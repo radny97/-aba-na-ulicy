@@ -1,8 +1,10 @@
 #pragma once
 #include "Utilities.h"
 #include "Point.h"
+#include "Enums.h"
 #include <string>
 #include <cmath>
+#include <SFML/Graphics.hpp>
 
 class Object
 {
@@ -16,9 +18,13 @@ public:
 	std::string type;
 	int ID;
 
-	virtual void Move(int velocity) {};
+	virtual void Move() {};
 	virtual bool CheckIfCollisionPointIsInBounds(Point point) { return true; };
+
+	sf::Clock timer;
+	sf::Time elapsedTime;
 
 protected:
 	int GenerateID();
+	int velocity;
 };

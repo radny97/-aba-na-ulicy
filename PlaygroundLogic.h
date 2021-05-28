@@ -3,14 +3,19 @@
 #include "Point.h"
 #include <map>
 #include <list>
+#include "Track.h"
+//#include <SFML/Graphics.hpp>
 //#include "Enums.h"
 
-struct Track
-{
-	Point beginingOfTrack;
-	Point endOfTrack;
-	bool fromDownToUp;
-};
+//struct Track
+//{
+//	Point beginingOfTrack;
+//	Point endOfTrack;
+//	bool fromDownToUp;
+//
+//	sf::Clock *timer;
+//	sf::Time elapsedTime;
+//};
 
 class PlaygroundLogic
 {

@@ -59,22 +59,28 @@ void PlaygroundLogic::AddTrackBasedOnXCoordinate(int xCoordinate, int heightOfWi
 	int xDifferenceFromParameterCoordinate;
 	xDifferenceFromParameterCoordinate = (heightOfWindow / 2) / Utilities::trackGrade; //k¹t nachylenia
 
+	//Track newTrack = new Track();
+
 	if (fromDownToUp == true)
 	{
-		Track newTrack = {
-		Point(xCoordinate - xDifferenceFromParameterCoordinate, heightOfWindow),
+		Track* newTrack = new Track(Point(xCoordinate - xDifferenceFromParameterCoordinate, heightOfWindow),
+			Point(xCoordinate + xDifferenceFromParameterCoordinate, 0),
+			fromDownToUp);
+		/*Point(xCoordinate - xDifferenceFromParameterCoordinate, heightOfWindow),
 		Point(xCoordinate + xDifferenceFromParameterCoordinate, 0),
-		fromDownToUp
-		};
-		this->tracks.push_back(newTrack);
+		fromDownToUp,
+		};*/
+		this->tracks.push_back(*newTrack);
 	}
 	else
 	{
-		Track newTrack = {
-		Point(xCoordinate + xDifferenceFromParameterCoordinate, 0),
+		Track* newTrack = new Track(Point(xCoordinate + xDifferenceFromParameterCoordinate, 0),
+			Point(xCoordinate - xDifferenceFromParameterCoordinate, heightOfWindow),
+			fromDownToUp);
+		/*Point(xCoordinate + xDifferenceFromParameterCoordinate, 0),
 		Point(xCoordinate - xDifferenceFromParameterCoordinate, heightOfWindow),
-		fromDownToUp
-		};
-		this->tracks.push_back(newTrack);
+		fromDownToUp,
+		};*/
+		this->tracks.push_back(*newTrack);
 	}
 }

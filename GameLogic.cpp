@@ -15,6 +15,7 @@ GameLogic::GameLogic()
 
 	this->player = new Player();
 
+	this->seed = 0; ////////////////////////////////////////////
 }
 
 void GameLogic::UpdateLogic()
@@ -49,11 +50,9 @@ void GameLogic::UpdateLogic()
 	}
 
 
-
-	if (IsTimeToGenerateCar())
+	for (auto& track : this->playground->tracks)
 	{
-		//generowanie dla ka¿dego toru oddzielnie
-		for (auto const& track : this->playground->tracks)
+		if (IsTimeToGenerateCar(&track))
 		{
 			GenerateCar(track);
 		}
@@ -134,21 +133,19 @@ void GameLogic::UpdateCar()
 		AddCarToDeleteListIfItDroveOfPlayground(iterator.second);
 		if (iterator.second->type == "car")
 		{
-			iterator.second->Move(slowVelocity);
+			iterator.second->Move();
 		}
 	}
 }
 
-bool GameLogic::IsTimeToGenerateCar()
+bool GameLogic::IsTimeToGenerateCar(Track* track)
 {
-	srand(time(0));
-	int randomNumber = rand() % 3 + 1;
+	track->elapsedTime = track->timer.getElapsedTime();
 
-	this->elapsedTime = this->timer.getElapsedTime();
-
-	if (this->elapsedTime.asSeconds() > randomNumber)
+	if (track->elapsedTime.asMilliseconds() > track->randomNumber)
 	{
-		this->timer.restart();
+		track->timer.restart();
+		track->randomNumber = rand() % 5000 + 1000;
 		return true;
 	}	
 	else
