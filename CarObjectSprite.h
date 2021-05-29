@@ -7,15 +7,16 @@ public:
 	CarObjectSprite() {};
 	CarObjectSprite(bool fromDownToUp)
 	{
+		int randomNumber = rand() % 5;
 		if (fromDownToUp == true)
 		{
 			this->texture = new sf::Texture();
-			this->Load("GraphicsTest/car from bottom.png");
+			this->SetTextureFromFile("GraphicsTest/carFromBottom" + std::to_string(randomNumber) + ".png");
 		}
 		else
 		{
 			this->texture = new sf::Texture();
-			this->Load("GraphicsTest/car from top.png");
+			this->SetTextureFromFile("GraphicsTest/carFromTop" + std::to_string(randomNumber) + ".png");
 		}
 	};
 

@@ -23,3 +23,12 @@ enum class SubStateOfGame
 	gameOver = 2,
 	nextLevel = 3
 };
+
+enum class StateOfFrog
+{
+	normalStanding = 0,
+	beforeAfterJump = 1,
+	jumpForwards = 2,
+	jumpBackwards = 3,
+	death = 4
+};

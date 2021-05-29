@@ -103,9 +103,13 @@ void GameGraphics::MapOneObjectToSprite(Object* source, ObjectSprite* target)
 
 	if (source->type == "frog")
 	{
-		target->posX = source->posX;
-		target->posY = source->posY;
-		target->ID = source->ID;
+		FrogObject* frogSource;
+		frogSource = dynamic_cast<FrogObject*>(source);
+
+		target->posX = frogSource->posX;
+		target->posY = frogSource->posY;
+		target->ID = frogSource->ID;
+		target->SetTextureFromType((int)frogSource->stateOfFrog);
 	}
 	else if (source->type == "car")
 	{
@@ -113,12 +117,7 @@ void GameGraphics::MapOneObjectToSprite(Object* source, ObjectSprite* target)
 		target->posY = source->posY;
 		target->ID = source->ID;
 	}
-	/*else if (source->type == "playground")
-	{
-		target->posX = source->posX;
-		target->posY = source->posY;
-		target->ID = source->ID;
-	}*/
+
 	target->setPosition(target->posX, target->posY);
 }
 

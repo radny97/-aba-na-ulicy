@@ -4,6 +4,11 @@
 //{
 //}
 
+void CarObject::UpdateObject()
+{
+	Move();
+}
+
 void CarObject::Move()
 {
 	if (this->fromDownToUp == false)

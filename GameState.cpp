@@ -19,6 +19,7 @@ void GameState::Update(sf::RenderWindow* window)
 	//if gra to to co ni¿ej
 	//if game over to zmieñ stan
 	//mo¿e jeszcze pauza
+
 	this->gameLogic->UpdateLogic();
 
 	this->gameGraphics->UpdateHud(this->gameLogic->player);

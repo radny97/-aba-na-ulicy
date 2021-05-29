@@ -18,11 +18,16 @@ public:
 	std::string type;
 	int ID;
 
-	virtual void Move() {};
+	virtual void UpdateObject() {};
+	virtual void Jump(float destination) {};
+	virtual void Death(float XcoordinateOfStart) {};
+	//virtual void Move() {};
 	virtual bool CheckIfCollisionPointIsInBounds(Point point) { return true; };
 
 	sf::Clock timer;
 	sf::Time elapsedTime;
+
+	bool collisional;
 
 protected:
 	int GenerateID();

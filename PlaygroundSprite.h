@@ -7,7 +7,7 @@ public:
 	PlaygroundSprite()
 	{
 		this->texture = new sf::Texture();
-		this->Load("GraphicsTest/grassFullHD.png");
+		this->SetTextureFromFile("GraphicsTest/grassFullHD.png");
 	};
 };
 

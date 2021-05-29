@@ -2,20 +2,21 @@
 
 GameLogic::GameLogic()
 {
+	this->player = new Player();
+
 	this->playground = new PlaygroundLogic();
 
 	this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
 
 	this->frogObject = new FrogObject(
 		this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX,
-		this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateY
+		this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateY,
+		this->player
 	);
 
 	this->allObjects.insert(std::make_pair(this->frogObject->ID, this->frogObject));
 
-	this->player = new Player();
-
-	this->seed = 0; ////////////////////////////////////////////
+	
 }
 
 void GameLogic::UpdateLogic()
@@ -23,7 +24,12 @@ void GameLogic::UpdateLogic()
 	//bedzie coœ w rodzaju animacji, które bêd¹ polegaæ na zmianie "stanu" obiektu, po up³yniêciu czasu mierzonego tutaj
 
 	//tu bêdzie pêtla wszystkich obiektów w której bêdzie coœ w stylu Object.Update()
-	UpdateCar();
+	for (auto& iterator : this->allObjects)
+	{
+		AddCarToDeleteListIfItDroveOfPlayground(iterator.second);
+
+		iterator.second->UpdateObject();
+	}
 
 	for (auto& firstLoopObject : this->allObjects)
 	{
@@ -39,11 +45,12 @@ void GameLogic::UpdateLogic()
 				{
 					this->player->score -= (this->playground->frogStandingPoints.size() - 1 - this->positionOfFrogIterator);
 					this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
-					this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
-					if (this->player->lives != 0)
-					{
-						this->player->lives -= 1;
-					}
+					this->frogObject->Death(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+					//this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+					//if (this->player->lives != 0)
+					//{
+					//	this->player->lives -= 1;
+					//}
 				}
 			}
 		}
@@ -79,12 +86,13 @@ PlaygroundLogic* GameLogic::GetPlaygroundLogic()
 
 CollisionType GameLogic::CheckCollision(Object* firstObject, Object* secondObject)
 {
-	if (firstObject->type == "car")
+	if (firstObject->type == "car" && firstObject->collisional)
 	{
 		CarObject* car;
 		car = dynamic_cast<CarObject*>(firstObject);
-		if (secondObject->CheckIfCollisionPointIsInBounds(*car->frontCollisionPoint) 
-		|| secondObject->CheckIfCollisionPointIsInBounds(*car->backCollisionPoint))
+		if (secondObject->collisional &&
+			(secondObject->CheckIfCollisionPointIsInBounds(*car->frontCollisionPoint) 
+		|| secondObject->CheckIfCollisionPointIsInBounds(*car->backCollisionPoint)))
 		{
 			if (secondObject->type == "frog")
 			{
@@ -103,22 +111,27 @@ CollisionType GameLogic::CheckCollision(Object* firstObject, Object* secondObjec
 
 void GameLogic::InputControl()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && !this->leftKeyPressed)
+	FrogObject* frog;
+	frog = dynamic_cast<FrogObject*>(this->frogObject);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && !this->leftKeyPressed && frog->stateOfFrog == StateOfFrog::normalStanding)
 	{
 		if (this->positionOfFrogIterator > 0)
 		{
 			this->positionOfFrogIterator--;
-			this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
-			this->player->score++;
+			//this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+			this->frogObject->Jump(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+			//this->player->score++;
 		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKeyPressed)
 	{
-		if (this->positionOfFrogIterator < this->playground->frogStandingPoints.size()-1)
+		if (this->positionOfFrogIterator < this->playground->frogStandingPoints.size()-1 && frog->stateOfFrog == StateOfFrog::normalStanding)
 		{
 			this->positionOfFrogIterator++;
-			this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
-			this->player->score--;
+			//this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+			this->frogObject->Jump(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+			//this->player->score--;
 		}
 	}
 
@@ -126,17 +139,17 @@ void GameLogic::InputControl()
 	this->rightKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);
 }
 
-void GameLogic::UpdateCar()
-{
-	for (auto& iterator : this->allObjects)
-	{
-		AddCarToDeleteListIfItDroveOfPlayground(iterator.second);
-		if (iterator.second->type == "car")
-		{
-			iterator.second->Move();
-		}
-	}
-}
+//void GameLogic::UpdateCar()
+//{
+//	for (auto& iterator : this->allObjects)
+//	{
+//		AddCarToDeleteListIfItDroveOfPlayground(iterator.second);
+//		if (iterator.second->type == "car")
+//		{
+//			iterator.second->Move();
+//		}
+//	}
+//}
 
 bool GameLogic::IsTimeToGenerateCar(Track* track)
 {

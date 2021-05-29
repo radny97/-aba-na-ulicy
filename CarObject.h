@@ -14,11 +14,13 @@ public:
 		this->fromDownToUp = fromDownToUp;
 		this->velocity = slowVelocity;
 
+		this->collisional = true;
 		UpdateCollisionPoints();
 	}
 
 	bool CheckIfCollisionPointIsInBounds(Point point) override;
-	void Move() override;
+	void Move();
+	void UpdateObject() override;
 
 	Point *frontCollisionPoint; //middle of front bumper of car
 	Point *backCollisionPoint; //middle of back bumper of car

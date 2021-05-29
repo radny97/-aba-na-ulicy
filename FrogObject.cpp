@@ -20,3 +20,95 @@ bool FrogObject::CheckIfCollisionPointIsInBounds(Point point)
 	}
 	return false;
 }
+
+void FrogObject::UpdateObject()
+{
+	
+	if (this->activateJump == true && this->stateOfFrog == StateOfFrog::normalStanding)
+	{
+		this->timer.restart();
+		this->stateOfFrog = StateOfFrog::beforeAfterJump;
+		
+	}
+
+	this->elapsedTime = this->timer.getElapsedTime();
+	if (this->elapsedTime.asMilliseconds() > 500 && this->stateOfFrog == StateOfFrog::beforeAfterJump && this->activateJump == true)
+	{
+		if (this->destinationOfJump < this->posX)
+		{
+			this->velocity = velocity::fastVelocity;
+			this->stateOfFrog = StateOfFrog::jumpForwards;
+			this->collisional = false;
+		}
+		else if (this->destinationOfJump > this->posX)
+		{
+			this->velocity = - velocity::fastVelocity;
+			this->stateOfFrog = StateOfFrog::jumpBackwards;
+			this->collisional = false;
+		}
+	}
+
+	if ((this->posX < this->destinationOfJump && this->stateOfFrog == StateOfFrog::jumpForwards) || (this->posX > this->destinationOfJump && this->stateOfFrog == StateOfFrog::jumpBackwards))
+	{
+		if (this->stateOfFrog == StateOfFrog::jumpForwards)
+		{
+			this->player->score++;
+		}
+		if (this->stateOfFrog == StateOfFrog::jumpBackwards)
+		{
+			this->player->score--;
+		}
+		
+		SetPosX(this->destinationOfJump);
+		this->velocity = 0;
+		this->collisional = true;
+		this->stateOfFrog = StateOfFrog::beforeAfterJump;
+		this->activateJump = false;
+		this->timer.restart();
+	}
+
+	this->elapsedTime = this->timer.getElapsedTime();
+	if (this->elapsedTime.asMilliseconds() > 100 && this->stateOfFrog == StateOfFrog::beforeAfterJump && this->activateJump == false)
+	{
+		this->stateOfFrog = StateOfFrog::normalStanding;
+	}
+
+	if (this->activateDeath == true && this->stateOfFrog == StateOfFrog::normalStanding)
+	{
+		this->collisional = false;
+		this->stateOfFrog = StateOfFrog::death;
+		this->timer.restart();
+	}
+
+	this->elapsedTime = this->timer.getElapsedTime();
+	if (this->elapsedTime.asMilliseconds() > 2000 && this->stateOfFrog == StateOfFrog::death && this->activateDeath == true)
+	{
+		SetPosX(this->destinationOfJump);
+		this->activateDeath = false;
+		this->stateOfFrog = StateOfFrog::normalStanding;
+		this->collisional = true;
+		if (this->player->lives != 0)
+		{
+			this->player->lives -= 1;
+		}
+	}
+
+	Move();
+}
+
+void FrogObject::Move()
+{
+	this->posX -= this->velocity;
+}
+
+void FrogObject::Jump(float destination)
+{
+	this->destinationOfJump = destination;
+	this->activateJump = true;
+}
+
+void FrogObject::Death(float XcoordinateOfStart)
+{
+	this->destinationOfJump = XcoordinateOfStart;
+	this->activateDeath = true;
+}
