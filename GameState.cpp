@@ -7,7 +7,8 @@ GameState::GameState(StateMachine* stateMachine)
 
 void GameState::Initialize(sf::RenderWindow* window)
 {
-	this->gameLogic = new GameLogic();
+	this->player = new Player();
+	this->gameLogic = new GameLogic(this->player);
 	this->gameGraphics = new GameGraphics();
 	this->gameGraphics->SetPlaygroundGraphics(this->gameLogic->GetPlaygroundLogic());
 }
@@ -20,11 +21,31 @@ void GameState::Update(sf::RenderWindow* window)
 	//if game over to zmieñ stan
 	//mo¿e jeszcze pauza
 
-	this->gameLogic->UpdateLogic();
+	switch (this->gameLogic->GetSubStateOfGame())
+	{
+	case SubStateOfGame::game:
+		this->gameLogic->UpdateLogic();
 
-	this->gameGraphics->UpdateHud(this->gameLogic->player);
-	this->gameGraphics->Update(this->gameLogic->GetAllObjects());
-	this->gameGraphics->Render(window);
+		this->gameGraphics->UpdateHud(this->gameLogic->player);
+		this->gameGraphics->Update(this->gameLogic->GetAllObjects());
+		this->gameGraphics->Render(window);
+		break;
+	case SubStateOfGame::pause:
+		
+		break;
+	case SubStateOfGame::nextLevel:
+		this->gameLogic = new GameLogic(this->player);
+		this->gameGraphics = new GameGraphics();
+		this->gameGraphics->SetPlaygroundGraphics(this->gameLogic->GetPlaygroundLogic());
+		break;
+	case SubStateOfGame::gameOver:
+
+		break;
+	default:
+		break;
+	}
+
+	
 }
 
 void GameState::Destroy(sf::RenderWindow* window)

@@ -12,10 +12,11 @@ class GameLogic
 {
 public:
 	GameLogic();
+	GameLogic(Player* player);
 	void UpdateLogic();
 	std::unordered_map<int, Object*> GetAllObjects();
 	void UpdateCar();
-	void AddCarToDeleteListIfItDroveOfPlayground(Object* car);
+	void AddCarToDeleteListIfItMakeConditions(Object* car);
 	bool IsTimeToGenerateCar(Track* track);
 	void GenerateCar(Track track);
 	void InputControl();
@@ -35,9 +36,16 @@ private:
 	std::unordered_map<int, Object*> allObjects;
 	std::unordered_map<int, Object*> objectsToDelete;
 
+	sf::Clock timer;
+	sf::Time elapsedTime;
+
+	bool stopGenerating;
 	bool leftKeyPressed;
 	bool rightKeyPressed;
 	int positionOfFrogIterator;
+
+	int scoreInThisRound;
+	int scoreInPreviousRound;
 
 	SubStateOfGame subState;
 };

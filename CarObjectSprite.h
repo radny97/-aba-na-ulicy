@@ -11,12 +11,12 @@ public:
 		if (fromDownToUp == true)
 		{
 			this->texture = new sf::Texture();
-			this->SetTextureFromFile("GraphicsTest/carFromBottom" + std::to_string(randomNumber) + ".png");
+			this->SetTextureFromFile("Graphics/carFromBottom" + std::to_string(randomNumber) + ".png");
 		}
 		else
 		{
 			this->texture = new sf::Texture();
-			this->SetTextureFromFile("GraphicsTest/carFromTop" + std::to_string(randomNumber) + ".png");
+			this->SetTextureFromFile("Graphics/carFromTop" + std::to_string(randomNumber) + ".png");
 		}
 	};
 

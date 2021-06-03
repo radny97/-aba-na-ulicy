@@ -19,7 +19,5 @@ private:
 	StateMachine* stateMachine;
 	GameLogic* gameLogic;
 	GameGraphics* gameGraphics;
-
-	sf::Sprite* background;  /*!< wskaŸnik na grafikê do za³adowania */
-	sf::Texture* texture;  /*!< wskaŸnik na teksturê, która zostanie u¿yta jako t³o */
+	Player* player;
 };

@@ -7,6 +7,6 @@ public:
 	TrackSprite()
 	{
 		this->texture = new sf::Texture();
-		this->SetTextureFromFile("GraphicsTest/road.png");
+		this->SetTextureFromFile("Graphics/road.png");
 	};
 };

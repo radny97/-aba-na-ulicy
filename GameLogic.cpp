@@ -2,9 +2,19 @@
 
 GameLogic::GameLogic()
 {
-	this->player = new Player();
 
-	this->playground = new PlaygroundLogic();
+}
+
+GameLogic::GameLogic(Player* player)
+{
+	this->subState = SubStateOfGame::game;
+	this->stopGenerating = false;
+	this->scoreInThisRound = 0;
+	
+	this->player = player;
+	this->scoreInPreviousRound = this->player->score;
+
+	this->playground = new PlaygroundLogic(this->player);
 
 	this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
 
@@ -15,57 +25,110 @@ GameLogic::GameLogic()
 	);
 
 	this->allObjects.insert(std::make_pair(this->frogObject->ID, this->frogObject));
-
-	
 }
 
 void GameLogic::UpdateLogic()
 {
-	//bedzie coœ w rodzaju animacji, które bêd¹ polegaæ na zmianie "stanu" obiektu, po up³yniêciu czasu mierzonego tutaj
+	this->scoreInThisRound = player->score - this->scoreInPreviousRound;
 
-	//tu bêdzie pêtla wszystkich obiektów w której bêdzie coœ w stylu Object.Update()
+	if (player->lives == 0 || this->frogObject->posX < this->playground->frogStandingPoints.at(0).coordinateX)
+	{
+		this->stopGenerating = true;
+	}
+
+	if (this->stopGenerating == true && this->allObjects.size() == 1)
+	{
+		if (player->lives == 0)
+		{
+			this->subState = SubStateOfGame::gameOver;
+		}
+		if (this->positionOfFrogIterator == 0)
+		{
+			this->subState = SubStateOfGame::nextLevel;
+		}
+	}
+
+
 	for (auto& iterator : this->allObjects)
 	{
-		AddCarToDeleteListIfItDroveOfPlayground(iterator.second);
+		AddCarToDeleteListIfItMakeConditions(iterator.second);
 
 		iterator.second->UpdateObject();
+
+		if (this->stopGenerating == true && iterator.second->type == "car")
+		{
+			iterator.second->velocity++;
+		}
 	}
 
-	for (auto& firstLoopObject : this->allObjects)
-	{
-		for (auto& secondLoopObject : this->allObjects)
+
+
+		for (auto& firstLoopObject : this->allObjects)
 		{
-			if (firstLoopObject.second != secondLoopObject.second)
+			for (auto& secondLoopObject : this->allObjects)
 			{
-				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == CollisionType::carCarColision)
+
+					if (firstLoopObject.second != secondLoopObject.second && (firstLoopObject.second->temporaryNonCollisional == false || secondLoopObject.second->temporaryNonCollisional == false))
+					{
+						if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == CollisionType::carCarColision)
+						{
+							if (firstLoopObject.second->velocity > secondLoopObject.second->velocity)
+							{
+								firstLoopObject.second->velocity = secondLoopObject.second->velocity - 1;
+								if(secondLoopObject.second->velocity < 3)
+									secondLoopObject.second->velocity++;
+								//secondLoopObject.second->velocity++;
+								//firstLoopObject.second->temporaryNonCollisional = true;
+
+							}
+							else
+							{
+								secondLoopObject.second->velocity = firstLoopObject.second->velocity - 1;
+								if (firstLoopObject.second->velocity < 3)
+									firstLoopObject.second->velocity++;
+								//firstLoopObject.second->velocity++;
+								//secondLoopObject.second->temporaryNonCollisional = true;
+							}
+							firstLoopObject.second->temporaryNonCollisional = true;
+							secondLoopObject.second->temporaryNonCollisional = true;
+
+						}
+						if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == CollisionType::frogCarCollision)
+						{
+							this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
+							this->frogObject->Death(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX, this->scoreInThisRound);
+							//this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
+							//if (this->player->lives != 0)
+							//{
+							//	this->player->lives -= 1;
+							//}
+						}
+					}
+
+					//secondLoopObject.second->collisionChecked = true;
+			}
+			//firstLoopObject.second->collisionChecked = true;
+		}
+
+
+
+		if (this->stopGenerating == false)
+		{
+			for (auto& track : this->playground->tracks)
+			{
+				if (IsTimeToGenerateCar(&track))
 				{
-					//tutaj coœ ze zmian¹ prêdkoœci itp
-				}
-				if (CheckCollision(firstLoopObject.second, secondLoopObject.second) == CollisionType::frogCarCollision)
-				{
-					this->player->score -= (this->playground->frogStandingPoints.size() - 1 - this->positionOfFrogIterator);
-					this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
-					this->frogObject->Death(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
-					//this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
-					//if (this->player->lives != 0)
-					//{
-					//	this->player->lives -= 1;
-					//}
+					GenerateCar(track);
 				}
 			}
+			InputControl();
 		}
-	}
+		
+
+		
 
 
-	for (auto& track : this->playground->tracks)
-	{
-		if (IsTimeToGenerateCar(&track))
-		{
-			GenerateCar(track);
-		}
-	}
-
-	InputControl();
+	
 
 	if (!this->objectsToDelete.empty())
 	{
@@ -171,12 +234,13 @@ void GameLogic::GenerateCar(Track track)
 	this->allObjects.insert(std::make_pair(carObject->ID, carObject));
 }
 
-void GameLogic::AddCarToDeleteListIfItDroveOfPlayground(Object *car)
+void GameLogic::AddCarToDeleteListIfItMakeConditions(Object *car)
 {
-	if (car->posY < -Utilities::carImageSizeY || car->posY > Utilities::screenResolutionY + Utilities::carImageSizeY)
+	if (!(car->posY > - (2*Utilities::carImageSizeY) && car->posY < Utilities::screenResolutionY + (2* Utilities::carImageSizeY)))
 	{
 		this->objectsToDelete.insert(std::make_pair(car->ID, car));
 	}
+
 }
 
 void GameLogic::DeleteObjects()

@@ -30,5 +30,6 @@ enum class StateOfFrog
 	beforeAfterJump = 1,
 	jumpForwards = 2,
 	jumpBackwards = 3,
-	death = 4
+	death = 4,
+	wait = 5
 };

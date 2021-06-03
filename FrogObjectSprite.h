@@ -7,7 +7,7 @@ public:
 	FrogObjectSprite()
 	{
 		this->texture = new sf::Texture();
-		this->SetTextureFromFile("GraphicsTest/frogNormalStanding.png");
+		this->SetTextureFromFile("Graphics/frogNormalStanding.png");
 	};
 
 	void SetTextureFromType(int type) override;

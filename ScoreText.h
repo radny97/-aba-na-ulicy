@@ -9,7 +9,7 @@ public:
 	{
 		sf::Font* font = new sf::Font();
 		font = new sf::Font();
-		font->loadFromFile("Fonts\\OpenSans-ExtraBold.ttf");
+		font->loadFromFile("Fonts\\PressStart2P-Regular.ttf");
 
 		this->setString("Score: 0");
 		this->setFont(*font);

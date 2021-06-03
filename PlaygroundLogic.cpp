@@ -1,17 +1,39 @@
 #include "PlaygroundLogic.h"
 
-PlaygroundLogic::PlaygroundLogic()
+PlaygroundLogic::PlaygroundLogic(Player* player)
 {
 	this->width = Utilities::screenResolutionX;
 	this->height = Utilities::screenResolutionY;
 
-	this->GeneratePlayground(this->width, this->height);
+	this->GeneratePlayground(this->width, this->height, player->score);
 }
 
-void PlaygroundLogic::GeneratePlayground(int widthOfWindow, int heightOfWindow)
+void PlaygroundLogic::GeneratePlayground(int widthOfWindow, int heightOfWindow, int playerScore)
 {
 	//tu bêdzie jakieœ losowanie wed³ug levela gry
-	int numberOfTracks = 6;
+	int numberOfTracks;// = numberOfTracks;
+	if (playerScore < 4)
+	{
+		numberOfTracks = 2;
+	}
+	else if (playerScore < 10)
+	{
+		numberOfTracks = 4;
+	}
+	else if (playerScore < 18)
+	{
+		numberOfTracks = 6;
+	}
+	else if (playerScore < 28)
+	{
+		numberOfTracks = 8;
+	}
+	else
+	{
+		numberOfTracks = 10;
+	}
+
+
 	int widthOfTrack = Utilities::widthOfTrack;
 	int widthOfSpaceBetweenTracks = Utilities::widthOfSpaceBetweenTracks;
 

@@ -20,7 +20,7 @@ public:
 
 	virtual void UpdateObject() {};
 	virtual void Jump(float destination) {};
-	virtual void Death(float XcoordinateOfStart) {};
+	virtual void Death(float XcoordinateOfStart, int scoreToDelete) {};
 	//virtual void Move() {};
 	virtual bool CheckIfCollisionPointIsInBounds(Point point) { return true; };
 
@@ -28,8 +28,10 @@ public:
 	sf::Time elapsedTime;
 
 	bool collisional;
+	bool temporaryNonCollisional;
+	int velocity;
 
 protected:
 	int GenerateID();
-	int velocity;
+	
 };

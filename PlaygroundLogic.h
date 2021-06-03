@@ -4,6 +4,7 @@
 #include <map>
 #include <list>
 #include "Track.h"
+#include "Player.h"
 //#include <SFML/Graphics.hpp>
 //#include "Enums.h"
 
@@ -20,8 +21,8 @@
 class PlaygroundLogic
 {
 public:
-	PlaygroundLogic();
-	void GeneratePlayground(int widthOfWindow, int heightOfWindow);
+	PlaygroundLogic(Player* player);
+	void GeneratePlayground(int widthOfWindow, int heightOfWindow, int numberOfTracks);
 
 	std::list<Track> tracks;
 	std::map<int, Point> frogStandingPoints;

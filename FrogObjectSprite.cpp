@@ -12,23 +12,27 @@ void FrogObjectSprite::SetTextureFromType(int type)
 		switch (type)
 		{
 		case (int)StateOfFrog::normalStanding:
-			this->texture->loadFromFile("GraphicsTest/frogNormalStanding.png");
+			this->texture->loadFromFile("Graphics/frogNormalStanding.png");
+			this->setTexture(*this->texture);
+			break;
+		case (int)StateOfFrog::wait:
+			this->texture->loadFromFile("Graphics/frogNormalStanding.png");
 			this->setTexture(*this->texture);
 			break;
 		case (int)StateOfFrog::jumpForwards:
-			this->texture->loadFromFile("GraphicsTest/frogJumpForwards.png");
+			this->texture->loadFromFile("Graphics/frogJumpForwards.png");
 			this->setTexture(*this->texture);
 			break;
 		case (int)StateOfFrog::jumpBackwards:
-			this->texture->loadFromFile("GraphicsTest/frogJumpBackwards.png");
+			this->texture->loadFromFile("Graphics/frogJumpBackwards.png");
 			this->setTexture(*this->texture);
 			break;
 		case (int)StateOfFrog::beforeAfterJump:
-			this->texture->loadFromFile("GraphicsTest/frogBeforeAfterJump.png");
+			this->texture->loadFromFile("Graphics/frogBeforeAfterJump.png");
 			this->setTexture(*this->texture);
 			break;
 		case (int)StateOfFrog::death:
-			this->texture->loadFromFile("GraphicsTest/frogDeath.png");
+			this->texture->loadFromFile("Graphics/frogDeath.png");
 			this->setTexture(*this->texture);
 			break;
 		default:

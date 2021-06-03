@@ -23,6 +23,13 @@ bool FrogObject::CheckIfCollisionPointIsInBounds(Point point)
 
 void FrogObject::UpdateObject()
 {
+	this->elapsedTime = this->timer.getElapsedTime();
+	if (this->elapsedTime.asMilliseconds() > 2000 && this->waitAfterStart == true && this->stateOfFrog == StateOfFrog::wait)
+	{
+		this->timer.restart();
+		this->waitAfterStart = false;
+		this->stateOfFrog = StateOfFrog::normalStanding;
+	}
 	
 	if (this->activateJump == true && this->stateOfFrog == StateOfFrog::normalStanding)
 	{
@@ -91,6 +98,7 @@ void FrogObject::UpdateObject()
 		{
 			this->player->lives -= 1;
 		}
+		player->score -= this->scoreToDelete;
 	}
 
 	Move();
@@ -103,12 +111,15 @@ void FrogObject::Move()
 
 void FrogObject::Jump(float destination)
 {
-	this->destinationOfJump = destination;
-	this->activateJump = true;
+
+		this->destinationOfJump = destination;
+		this->activateJump = true;
 }
 
-void FrogObject::Death(float XcoordinateOfStart)
+void FrogObject::Death(float XcoordinateOfStart, int scoreToDelete)
 {
 	this->destinationOfJump = XcoordinateOfStart;
 	this->activateDeath = true;
+	this->activateJump = false;
+	this->scoreToDelete = scoreToDelete;
 }

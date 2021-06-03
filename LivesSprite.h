@@ -7,7 +7,7 @@ public:
 	LivesSprite()
 	{
 		this->texture = new sf::Texture();
-		this->SetTextureFromFile("GraphicsTest/heart.png");
+		this->SetTextureFromFile("Graphics/heart.png");
 	};
 };
 

@@ -16,7 +16,10 @@ public:
 		this->ID = GenerateID();
 		this->collisional = true;
 		this->velocity = 0;
-		this->stateOfFrog = StateOfFrog::normalStanding;
+		this->stateOfFrog = StateOfFrog::wait;
+
+		this->waitAfterStart = true;
+		this->timer.restart();
 	}
 	bool CheckIfCollisionPointIsInBounds(Point point) override;
 	void SetPosX(float x) override;
@@ -24,7 +27,7 @@ public:
 	void UpdateObject() override;
 	void Move();
 	void Jump(float destination) override;
-	void Death(float XcoordinateOfStart) override;
+	void Death(float XcoordinateOfStart, int scoreToDelete) override;
 
 	StateOfFrog stateOfFrog;
 	Player* player;
@@ -33,4 +36,6 @@ private:
 	bool activateJump;
 	bool activateDeath;
 	float destinationOfJump;
+	int scoreToDelete;
+	bool waitAfterStart;
 };
