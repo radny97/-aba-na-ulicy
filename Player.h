@@ -2,30 +2,30 @@
 #include "Utilities.h"
 #include <string>
 
+//class Player
+//{
+//public:
+//	Player() 
+//	{
+//		this->lives = Utilities::playerLives;
+//		this->score = 0;
+//	};
+//	int lives;
+//	int score;
+//	std::string name;
+//};
+
 class Player
 {
 public:
-	Player() 
-	{
-		this->lives = Utilities::playerLives;
-		this->score = 0;
-	};
-	int lives;
-	int score;
-	std::string name;
-};
-
-class PlayerSingleton
-{
-public:
-    static PlayerSingleton& getInstance()
+    static Player& getInstance()
     {
-        static PlayerSingleton    instance; // Guaranteed to be destroyed.
+        static Player    instance; // Guaranteed to be destroyed.
                               // Instantiated on first use.
         return instance;
     }
 private:
-    PlayerSingleton() {
+    Player() {
         this->lives = Utilities::playerLives;
         this->score = 0;
     }                    // Constructor? (the {} brackets) are needed here.
@@ -61,8 +61,8 @@ public:
         this->name = "";
     }
 
-    PlayerSingleton(PlayerSingleton const&) = delete;
-    void operator=(PlayerSingleton const&) = delete;
+    Player(Player const&) = delete;
+    void operator=(Player const&) = delete;
 
     // Note: Scott Meyers mentions in his Effective Modern
     //       C++ book, that deleted functions should generally

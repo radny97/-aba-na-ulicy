@@ -7,8 +7,8 @@ GameState::GameState(StateMachine* stateMachine)
 
 void GameState::Initialize(sf::RenderWindow* window)
 {
-	this->player = new Player();
-	this->gameLogic = new GameLogic(this->player);
+	//this->player = new Player();
+	this->gameLogic = new GameLogic();
 	this->gameGraphics = new GameGraphics();
 	this->gameGraphics->SetPlaygroundGraphics(this->gameLogic->GetPlaygroundLogic());
 }
@@ -28,14 +28,14 @@ void GameState::Update(sf::RenderWindow* window)
 		this->gameLogic->UpdateLogic();
 		this->gameLogic->InputControl();
 
-		this->gameGraphics->UpdateHud(this->gameLogic->player);
+		this->gameGraphics->UpdateHud();
 		this->gameGraphics->Update(this->gameLogic->GetAllObjects());
 		this->gameGraphics->Render(window);
 		break;
 	case SubStateOfGame::gameWaiting:
 		this->gameLogic->UpdateLogic();
 		
-		this->gameGraphics->UpdateHud(this->gameLogic->player);
+		this->gameGraphics->UpdateHud();
 		this->gameGraphics->Update(this->gameLogic->GetAllObjects());
 		this->gameGraphics->Render(window);
 		break;
@@ -46,7 +46,7 @@ void GameState::Update(sf::RenderWindow* window)
 		this->gameGraphics->RenderPause(window);
 		break;
 	case SubStateOfGame::nextLevel:
-		this->gameLogic = new GameLogic(this->player);
+		this->gameLogic = new GameLogic();
 		this->gameGraphics = new GameGraphics();
 		this->gameGraphics->SetPlaygroundGraphics(this->gameLogic->GetPlaygroundLogic());
 		break;

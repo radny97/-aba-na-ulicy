@@ -6,11 +6,11 @@ class FrogObject : public Object
 {
 public:
 	FrogObject() {};
-	FrogObject(float x, float y, Player* player)
+	FrogObject(float x, float y)
 	{
 		this->posX = x - (Utilities::frogImageSizeX / 2);
 		this->posY = y - (Utilities::frogImageSizeY / 2);
-		this->player = player;
+		//this->player = player;
 
 		this->type = "frog";
 		this->ID = GenerateID();
@@ -30,7 +30,7 @@ public:
 	void Death(float XcoordinateOfStart, int scoreToDelete) override;
 
 	StateOfFrog stateOfFrog;
-	Player* player;
+	//Player* player;
 
 private:
 	bool activateJump;

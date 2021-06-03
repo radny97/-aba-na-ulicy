@@ -12,7 +12,7 @@ class GameLogic
 {
 public:
 	GameLogic();
-	GameLogic(Player* player);
+	//GameLogic(Player* player);
 	void UpdateLogic();
 	std::unordered_map<int, Object*> GetAllObjects();
 	//void UpdateCar();
@@ -27,7 +27,7 @@ public:
 	SubStateOfGame GetSubStateOfGame();
 	void SetSubStateOfGame(SubStateOfGame subState);
 
-	Player* player;
+	//Player* player;
 
 private:
 	Object* frogObject;

@@ -59,11 +59,13 @@ void FrogObject::UpdateObject()
 	{
 		if (this->stateOfFrog == StateOfFrog::jumpForwards)
 		{
-			this->player->score++;
+			Player::getInstance().SetScore(Player::getInstance().GetScore() + 1);
+			//this->player->score++;
 		}
 		if (this->stateOfFrog == StateOfFrog::jumpBackwards)
 		{
-			this->player->score--;
+			Player::getInstance().SetScore(Player::getInstance().GetScore() - 1);
+			//this->player->score--;
 		}
 		
 		SetPosX(this->destinationOfJump);
@@ -94,11 +96,13 @@ void FrogObject::UpdateObject()
 		this->activateDeath = false;
 		this->stateOfFrog = StateOfFrog::normalStanding;
 		this->collisional = true;
-		if (this->player->lives != 0)
+		if (Player::getInstance().GetLives() != 0)
 		{
-			this->player->lives -= 1;
+			Player::getInstance().SetLives(Player::getInstance().GetLives() - 1);
+			//this->player->lives -= 1;
 		}
-		player->score -= this->scoreToDelete;
+		Player::getInstance().SetScore(Player::getInstance().GetScore() - this->scoreToDelete);
+		//player->score -= this->scoreToDelete;
 	}
 
 	Move();

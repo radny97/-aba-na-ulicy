@@ -21,7 +21,7 @@
 class PlaygroundLogic
 {
 public:
-	PlaygroundLogic(Player* player);
+	PlaygroundLogic();
 	void GeneratePlayground(int widthOfWindow, int heightOfWindow, int numberOfTracks);
 
 	std::list<Track> tracks;

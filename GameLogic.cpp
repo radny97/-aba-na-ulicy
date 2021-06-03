@@ -1,27 +1,27 @@
 #include "GameLogic.h"
 
+//GameLogic::GameLogic()
+//{
+//
+//}
+
 GameLogic::GameLogic()
-{
-
-}
-
-GameLogic::GameLogic(Player* player)
 {
 	this->subState = SubStateOfGame::game;
 	//this->stopGenerating = false;
 	this->scoreInThisRound = 0;
 	
-	this->player = player;
-	this->scoreInPreviousRound = this->player->score;
+	//this->player = player;
+	this->scoreInPreviousRound = Player::getInstance().GetScore();
 
-	this->playground = new PlaygroundLogic(this->player);
+	this->playground = new PlaygroundLogic();
 
 	this->positionOfFrogIterator = this->playground->frogStandingPoints.size() - 1;
 
 	this->frogObject = new FrogObject(
 		this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX,
-		this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateY,
-		this->player
+		this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateY
+		//this->player
 	);
 
 	this->allObjects.insert(std::make_pair(this->frogObject->ID, this->frogObject));
@@ -29,9 +29,9 @@ GameLogic::GameLogic(Player* player)
 
 void GameLogic::UpdateLogic()
 {
-	this->scoreInThisRound = player->score - this->scoreInPreviousRound;
+	this->scoreInThisRound = Player::getInstance().GetScore() - this->scoreInPreviousRound;
 
-	if (player->lives == 0 || this->frogObject->posX < this->playground->frogStandingPoints.at(0).coordinateX)
+	if (Player::getInstance().GetLives() == 0 || this->frogObject->posX < this->playground->frogStandingPoints.at(0).coordinateX)
 	{
 		//this->stopGenerating = true;
 		this->subState = SubStateOfGame::gameWaiting;
@@ -39,8 +39,9 @@ void GameLogic::UpdateLogic()
 
 	if (this->subState == SubStateOfGame::gameWaiting && this->allObjects.size() == 1)
 	{
-		if (player->lives == 0)
+		if (Player::getInstance().GetLives() == 0)
 		{
+			Player::getInstance().SetScore(Player::getInstance().GetScore() + this->scoreInThisRound);
 			this->subState = SubStateOfGame::gameOver;
 		}
 		if (this->positionOfFrogIterator == 0)

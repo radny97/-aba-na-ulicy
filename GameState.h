@@ -19,5 +19,5 @@ private:
 	StateMachine* stateMachine;
 	GameLogic* gameLogic;
 	GameGraphics* gameGraphics;
-	Player* player;
+	//Player* player;
 };

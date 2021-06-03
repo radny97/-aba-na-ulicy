@@ -1,11 +1,11 @@
 #include "PlaygroundLogic.h"
 
-PlaygroundLogic::PlaygroundLogic(Player* player)
+PlaygroundLogic::PlaygroundLogic()
 {
 	this->width = Utilities::screenResolutionX;
 	this->height = Utilities::screenResolutionY;
 
-	this->GeneratePlayground(this->width, this->height, player->score);
+	this->GeneratePlayground(this->width, this->height, Player::getInstance().GetScore());
 }
 
 void PlaygroundLogic::GeneratePlayground(int widthOfWindow, int heightOfWindow, int playerScore)

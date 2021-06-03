@@ -53,13 +53,13 @@ void GameGraphics::Update(std::unordered_map<int, Object*> allModels)
 	}
 }
 
-void GameGraphics::UpdateHud(Player* player)
+void GameGraphics::UpdateHud()
 {
 	//mapowanie ¿yæ i punktów
-	this->scoreText->value = player->score;
+	this->scoreText->value = Player::getInstance().GetScore();
 	this->scoreText->UpdateScore();
 	
-	if (player->lives < this->livesSprites.size())
+	if (Player::getInstance().GetLives() < this->livesSprites.size())
 	{
 		this->livesSprites.pop_back();
 	}

@@ -23,7 +23,7 @@ public:
 	void MapOneObjectToSprite(Object* source, ObjectSprite* target);
 	ObjectSprite* ChooseTypeOfNewObjectStripe(Object* source);
 	void DeleteSpritesOfObjectsThatNoLongerExist();
-	void UpdateHud(Player* player);
+	void UpdateHud();
 	//void SetNewPositionsOfSprites();
 	void Render(sf::RenderWindow* window);
 	void RenderPause(sf::RenderWindow* window);
