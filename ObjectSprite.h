@@ -9,7 +9,6 @@ public:
 	int posY;
 	int ID;
 	sf::Texture* texture;
-	std::string filename;
 
 	int versionOfTexture;
 	

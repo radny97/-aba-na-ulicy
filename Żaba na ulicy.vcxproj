@@ -145,16 +145,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddPlayerGraphics.cpp" />
+    <ClCompile Include="AddPlayerLogic.cpp" />
+    <ClCompile Include="AddPlayerSprite.cpp" />
+    <ClCompile Include="AddPlayerState.cpp" />
     <ClCompile Include="CarObject.cpp" />
     <ClCompile Include="CarObjectSprite.cpp" />
     <ClCompile Include="FrogObject.cpp" />
     <ClCompile Include="FrogObjectSprite.cpp" />
     <ClCompile Include="GameGraphics.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="HudGraphics.cpp" />
     <ClCompile Include="LivesSprite.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectSprite.cpp" />
     <ClCompile Include="PauseScreenGraphics.cpp" />
@@ -168,8 +174,13 @@
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="TrackSprite.cpp" />
     <ClCompile Include="Utilities.cpp" />
+    <ClCompile Include="WallOfFameState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddPlayerGraphics.h" />
+    <ClInclude Include="AddPlayerLogic.h" />
+    <ClInclude Include="AddPlayerSprite.h" />
+    <ClInclude Include="AddPlayerState.h" />
     <ClInclude Include="ApplicationState.h" />
     <ClInclude Include="CarObject.h" />
     <ClInclude Include="CarObjectSprite.h" />
@@ -178,9 +189,11 @@
     <ClInclude Include="FrogObjectSprite.h" />
     <ClInclude Include="GameGraphics.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameOverState.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="HudGraphics.h" />
     <ClInclude Include="LivesSprite.h" />
+    <ClInclude Include="MenuState.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectSprite.h" />
     <ClInclude Include="PauseScreenGraphics.h" />
@@ -195,6 +208,7 @@
     <ClInclude Include="Track.h" />
     <ClInclude Include="TrackSprite.h" />
     <ClInclude Include="Utilities.h" />
+    <ClInclude Include="WallOfFameState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

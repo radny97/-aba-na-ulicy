@@ -2,23 +2,17 @@
 #include <SFML/Graphics.hpp>
 #include "ApplicationState.h"
 #include "StateMachine.h"
-#include "GameLogic.h"
-#include "GameGraphics.h"
-#include "GameOverState.h"
 
-class GameState : public ApplicationState
+class MenuState : public ApplicationState
 {
 public:
-	GameState(StateMachine* core_state);
+	MenuState(StateMachine* core_state);
 
 	void Initialize(sf::RenderWindow* window);
 	void Update(sf::RenderWindow* window);
-//	void Render(sf::RenderWindow* window);
 	void Destroy(sf::RenderWindow* window);
 
 private:
 	StateMachine* stateMachine;
-	GameLogic* gameLogic;
-	GameGraphics* gameGraphics;
-	//Player* player;
 };
+

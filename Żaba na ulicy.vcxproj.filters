@@ -19,35 +19,122 @@
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{881c5867-25a9-44ad-bb5d-790bfa234994}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Game State">
+    <Filter Include="Header Files\Game State Files">
       <UniqueIdentifier>{6b986c35-e1b3-47b1-abf5-5b5dcdbf7f66}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Game State\Logic">
+    <Filter Include="Header Files\Game State Files\Logic">
       <UniqueIdentifier>{79468695-34d2-4414-89a1-78ad1bb6e49b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Game State\Graphics">
+    <Filter Include="Header Files\Game State Files\Graphics">
       <UniqueIdentifier>{33c5eedb-c52a-4aa7-ad97-27a9ffdcffa3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Game State\Entities Sprites">
+    <Filter Include="Header Files\Game State Files\Entities Sprites">
       <UniqueIdentifier>{b9700529-988b-4ded-959c-ba59521007bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game State">
-      <UniqueIdentifier>{350e0721-7115-44f0-8e18-dfdc07137d07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game State\Logic">
-      <UniqueIdentifier>{3a76ddb1-57fb-4af6-80d5-a0e2749a8018}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game State\Graphics">
-      <UniqueIdentifier>{f41b4284-cd8c-44cb-b2ee-ff1e0d4534a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game State\Entities Sprites">
-      <UniqueIdentifier>{13f5492b-83a1-4956-b4ab-1975ff8d9968}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Game State\Entities Logic">
+    <Filter Include="Header Files\Game State Files\Entities Logic">
       <UniqueIdentifier>{c756055c-ea32-46fb-8189-0864548fb343}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Game State\Entities Logic">
+    <Filter Include="Source Files\Game State Files">
+      <UniqueIdentifier>{350e0721-7115-44f0-8e18-dfdc07137d07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game State Files\Logic">
+      <UniqueIdentifier>{3a76ddb1-57fb-4af6-80d5-a0e2749a8018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game State Files\Graphics">
+      <UniqueIdentifier>{f41b4284-cd8c-44cb-b2ee-ff1e0d4534a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game State Files\Entities Sprites">
+      <UniqueIdentifier>{13f5492b-83a1-4956-b4ab-1975ff8d9968}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game State Files\Entities Logic">
       <UniqueIdentifier>{7334bafb-d911-4afe-8ff9-4d780018bda4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu State Files">
+      <UniqueIdentifier>{768a4493-a2d8-46d0-a6c6-93ef543eeb7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menu State Files">
+      <UniqueIdentifier>{024687e3-38f8-4b8a-ad98-0edfa864d38e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameOver State Files">
+      <UniqueIdentifier>{ba609e45-9f89-400b-a511-97c501344c6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameOver State Files">
+      <UniqueIdentifier>{b1b04880-07cf-4a89-91ba-3c89988a3661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AddPlayer State Files">
+      <UniqueIdentifier>{50a2c2a9-6592-4590-9a92-c40460285d31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AddPlayer State Files">
+      <UniqueIdentifier>{3aa8d952-2190-45be-9679-62d80b94b805}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WallOfFame State Files">
+      <UniqueIdentifier>{bf95add3-4bb7-45ee-97df-299a57994e23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WallOfFame State Files">
+      <UniqueIdentifier>{709277a5-25fa-4cf1-a043-379de0ad6709}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menu State Files\Entities Sprites">
+      <UniqueIdentifier>{67ced98a-c789-47ac-8d19-0ce9542bac3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menu State Files\Graphics">
+      <UniqueIdentifier>{5759618b-7099-4e0c-a9af-17a1030542ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameOver State Files\Entities Sprites">
+      <UniqueIdentifier>{11dde32a-0ddb-41dc-9b62-5f894808416a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameOver State Files\Graphics">
+      <UniqueIdentifier>{a5b8e447-6d1b-4862-bfd4-5857b2374a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WallOfFame State Files\Entities Sprites">
+      <UniqueIdentifier>{dfb50a46-14e4-419e-8472-3dd4593449d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WallOfFame State Files\Graphics">
+      <UniqueIdentifier>{720e48af-2c4e-4d6b-9236-41279c4d2559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu State Files\Entities Sprites">
+      <UniqueIdentifier>{bb4cd792-3c6c-4d4c-8db3-eb5f65e75716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameOver State Files\Entities Sprites">
+      <UniqueIdentifier>{144d012d-b785-4b1c-b5a6-179cfad5a0c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AddPlayer State Files\Entities Sprites">
+      <UniqueIdentifier>{dca6ce8b-cea4-4ac1-a4d4-e2ea97437f7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WallOfFame State Files\Entities Sprites">
+      <UniqueIdentifier>{040c4ed2-64d9-4ab4-b216-93f2fa0c0f0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu State Files\Graphics">
+      <UniqueIdentifier>{fad0febf-e4bd-46b0-82f6-fa8060dbc052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameOver State Files\Graphics">
+      <UniqueIdentifier>{76dc5333-6b29-45af-8eb7-7dae42bc57c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AddPlayer State Files\Graphics">
+      <UniqueIdentifier>{d99117c4-2265-4ccf-94ad-fedfc3051c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WallOfFame State Files\Graphics">
+      <UniqueIdentifier>{44807428-7b40-4aa0-8d20-fd86c0014dc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WallOfFame State Files\Logic">
+      <UniqueIdentifier>{697b0591-5c55-4046-b3d9-67839ce7e29a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AddPlayer State Files\Logic">
+      <UniqueIdentifier>{b1ed25c5-4e7d-43da-9927-892672d51b59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameOver State Files\Logic">
+      <UniqueIdentifier>{51c26fff-fda0-4c5d-9fc6-f8fe526de7b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu State Files\Logic">
+      <UniqueIdentifier>{7a9f98e0-e9c7-4200-b5f8-bede8443e9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WallOfFame State Files\Logic">
+      <UniqueIdentifier>{cf721e58-fc9d-4b98-80db-836eab56e873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameOver State Files\Logic">
+      <UniqueIdentifier>{e77f5654-44a0-4241-b427-412c99fd7f10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menu State Files\Logic">
+      <UniqueIdentifier>{c753a8b8-286e-4b68-9271-1feadac1b14e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -58,67 +145,88 @@
       <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="GameGraphics.cpp">
-      <Filter>Source Files\Game State\Graphics</Filter>
+      <Filter>Source Files\Game State Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="GameLogic.cpp">
-      <Filter>Source Files\Game State\Logic</Filter>
+      <Filter>Source Files\Game State Files\Logic</Filter>
     </ClCompile>
     <ClCompile Include="FrogObject.cpp">
-      <Filter>Source Files\Game State\Entities Logic</Filter>
+      <Filter>Source Files\Game State Files\Entities Logic</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Source Files\Game State\Entities Logic</Filter>
+      <Filter>Source Files\Game State Files\Entities Logic</Filter>
     </ClCompile>
     <ClCompile Include="CarObject.cpp">
-      <Filter>Source Files\Game State\Entities Logic</Filter>
+      <Filter>Source Files\Game State Files\Entities Logic</Filter>
     </ClCompile>
     <ClCompile Include="CarObjectSprite.cpp">
-      <Filter>Source Files\Game State\Entities Sprites</Filter>
+      <Filter>Source Files\Game State Files\Entities Sprites</Filter>
     </ClCompile>
     <ClCompile Include="FrogObjectSprite.cpp">
-      <Filter>Source Files\Game State\Entities Sprites</Filter>
+      <Filter>Source Files\Game State Files\Entities Sprites</Filter>
     </ClCompile>
     <ClCompile Include="ObjectSprite.cpp">
-      <Filter>Source Files\Game State\Entities Sprites</Filter>
+      <Filter>Source Files\Game State Files\Entities Sprites</Filter>
     </ClCompile>
     <ClCompile Include="Utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlaygroundLogic.cpp">
-      <Filter>Source Files\Game State\Logic</Filter>
+      <Filter>Source Files\Game State Files\Logic</Filter>
     </ClCompile>
     <ClCompile Include="Point.cpp">
-      <Filter>Source Files\Game State\Logic</Filter>
+      <Filter>Source Files\Game State Files\Logic</Filter>
     </ClCompile>
     <ClCompile Include="PlaygroundGraphics.cpp">
-      <Filter>Source Files\Game State\Graphics</Filter>
+      <Filter>Source Files\Game State Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="TrackSprite.cpp">
-      <Filter>Source Files\Game State\Entities Sprites</Filter>
+      <Filter>Source Files\Game State Files\Entities Sprites</Filter>
     </ClCompile>
     <ClCompile Include="PlaygroundSprite.cpp">
-      <Filter>Source Files\Game State\Entities Sprites</Filter>
+      <Filter>Source Files\Game State Files\Entities Sprites</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HudGraphics.cpp">
-      <Filter>Source Files\Game State\Graphics</Filter>
+      <Filter>Source Files\Game State Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="ScoreText.cpp">
-      <Filter>Source Files\Game State\Graphics</Filter>
+      <Filter>Source Files\Game State Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="LivesSprite.cpp">
-      <Filter>Source Files\Game State\Entities Sprites</Filter>
+      <Filter>Source Files\Game State Files\Entities Sprites</Filter>
     </ClCompile>
     <ClCompile Include="PauseScreenSprite.cpp">
-      <Filter>Source Files\Game State\Entities Sprites</Filter>
+      <Filter>Source Files\Game State Files\Entities Sprites</Filter>
     </ClCompile>
     <ClCompile Include="Track.cpp">
-      <Filter>Source Files\Game State\Logic</Filter>
+      <Filter>Source Files\Game State Files\Logic</Filter>
     </ClCompile>
     <ClCompile Include="PauseScreenGraphics.cpp">
-      <Filter>Source Files\Game State\Graphics</Filter>
+      <Filter>Source Files\Game State Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="AddPlayerState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="WallOfFameState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="AddPlayerSprite.cpp">
+      <Filter>Source Files\AddPlayer State Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddPlayerGraphics.cpp">
+      <Filter>Source Files\AddPlayer State Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddPlayerLogic.cpp">
+      <Filter>Source Files\AddPlayer State Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -132,70 +240,91 @@
       <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="GameGraphics.h">
-      <Filter>Header Files\Game State\Graphics</Filter>
+      <Filter>Header Files\Game State Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="GameLogic.h">
-      <Filter>Header Files\Game State\Logic</Filter>
+      <Filter>Header Files\Game State Files\Logic</Filter>
     </ClInclude>
     <ClInclude Include="FrogObject.h">
-      <Filter>Header Files\Game State\Entities Logic</Filter>
+      <Filter>Header Files\Game State Files\Entities Logic</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Header Files\Game State\Entities Logic</Filter>
+      <Filter>Header Files\Game State Files\Entities Logic</Filter>
     </ClInclude>
     <ClInclude Include="CarObject.h">
-      <Filter>Header Files\Game State\Entities Logic</Filter>
+      <Filter>Header Files\Game State Files\Entities Logic</Filter>
     </ClInclude>
     <ClInclude Include="ObjectSprite.h">
-      <Filter>Header Files\Game State\Entities Sprites</Filter>
+      <Filter>Header Files\Game State Files\Entities Sprites</Filter>
     </ClInclude>
     <ClInclude Include="FrogObjectSprite.h">
-      <Filter>Header Files\Game State\Entities Sprites</Filter>
+      <Filter>Header Files\Game State Files\Entities Sprites</Filter>
     </ClInclude>
     <ClInclude Include="CarObjectSprite.h">
-      <Filter>Header Files\Game State\Entities Sprites</Filter>
+      <Filter>Header Files\Game State Files\Entities Sprites</Filter>
     </ClInclude>
     <ClInclude Include="Utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlaygroundLogic.h">
-      <Filter>Header Files\Game State\Logic</Filter>
+      <Filter>Header Files\Game State Files\Logic</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
-      <Filter>Header Files\Game State\Logic</Filter>
+      <Filter>Header Files\Game State Files\Logic</Filter>
     </ClInclude>
     <ClInclude Include="Enums.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlaygroundGraphics.h">
-      <Filter>Header Files\Game State\Graphics</Filter>
+      <Filter>Header Files\Game State Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="TrackSprite.h">
-      <Filter>Header Files\Game State\Entities Sprites</Filter>
+      <Filter>Header Files\Game State Files\Entities Sprites</Filter>
     </ClInclude>
     <ClInclude Include="PlaygroundSprite.h">
-      <Filter>Header Files\Game State\Entities Sprites</Filter>
+      <Filter>Header Files\Game State Files\Entities Sprites</Filter>
     </ClInclude>
     <ClInclude Include="HudGraphics.h">
-      <Filter>Header Files\Game State\Graphics</Filter>
+      <Filter>Header Files\Game State Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="ScoreText.h">
-      <Filter>Header Files\Game State\Graphics</Filter>
+      <Filter>Header Files\Game State Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="LivesSprite.h">
-      <Filter>Header Files\Game State\Entities Sprites</Filter>
+      <Filter>Header Files\Game State Files\Entities Sprites</Filter>
     </ClInclude>
     <ClInclude Include="Track.h">
-      <Filter>Header Files\Game State\Logic</Filter>
+      <Filter>Header Files\Game State Files\Logic</Filter>
     </ClInclude>
     <ClInclude Include="PauseScreenSprite.h">
-      <Filter>Header Files\Game State\Entities Sprites</Filter>
+      <Filter>Header Files\Game State Files\Entities Sprites</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PauseScreenGraphics.h">
-      <Filter>Header Files\Game State\Graphics</Filter>
+      <Filter>Header Files\Game State Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="AddPlayerState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="WallOfFameState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="AddPlayerSprite.h">
+      <Filter>Header Files\AddPlayer State Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AddPlayerGraphics.h">
+      <Filter>Header Files\AddPlayer State Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AddPlayerLogic.h">
+      <Filter>Header Files\AddPlayer State Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

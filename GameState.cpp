@@ -27,14 +27,12 @@ void GameState::Update(sf::RenderWindow* window)
 
 		this->gameLogic->UpdateLogic();
 		this->gameLogic->InputControl();
-
 		this->gameGraphics->UpdateHud();
 		this->gameGraphics->Update(this->gameLogic->GetAllObjects());
 		this->gameGraphics->Render(window);
 		break;
 	case SubStateOfGame::gameWaiting:
 		this->gameLogic->UpdateLogic();
-		
 		this->gameGraphics->UpdateHud();
 		this->gameGraphics->Update(this->gameLogic->GetAllObjects());
 		this->gameGraphics->Render(window);
@@ -51,7 +49,7 @@ void GameState::Update(sf::RenderWindow* window)
 		this->gameGraphics->SetPlaygroundGraphics(this->gameLogic->GetPlaygroundLogic());
 		break;
 	case SubStateOfGame::gameOver:
-
+		this->stateMachine->SetState(new GameOverState(this->stateMachine));
 		break;
 	default:
 		break;

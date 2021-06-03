@@ -204,7 +204,7 @@ void GameLogic::InputControl()
 		this->subState = SubStateOfGame::pause;
 		this->escapeKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && this->subState == SubStateOfGame::pause && !this->enterKeyPressed)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter) && this->subState == SubStateOfGame::pause && !this->enterKeyPressed)
 	{
 		this->subState = SubStateOfGame::game;
 		this->enterKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter);
@@ -216,6 +216,12 @@ void GameLogic::InputControl()
 				track.timer.restart();
 			}	
 		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && this->subState == SubStateOfGame::pause && !this->escapeKeyPressed)
+	{
+		this->subState = SubStateOfGame::gameOver;
+		this->escapeKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter);
+
 	}
 
 	this->enterKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter);
