@@ -66,7 +66,7 @@ public:
         P,            ///< The P key
         Q,            ///< The Q key
         R,            ///< The R key
-        S,            ///< The S key
+        PlayerSingleton,            ///< The S key
         T,            ///< The T key
         U,            ///< The U key
         V,            ///< The V key

@@ -21,7 +21,8 @@ enum class SubStateOfGame
 	game = 0,
 	pause = 1,
 	gameOver = 2,
-	nextLevel = 3
+	nextLevel = 3,
+	gameWaiting = 4
 };
 
 enum class StateOfFrog

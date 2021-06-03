@@ -24,14 +24,26 @@ void GameState::Update(sf::RenderWindow* window)
 	switch (this->gameLogic->GetSubStateOfGame())
 	{
 	case SubStateOfGame::game:
+
 		this->gameLogic->UpdateLogic();
+		this->gameLogic->InputControl();
 
 		this->gameGraphics->UpdateHud(this->gameLogic->player);
 		this->gameGraphics->Update(this->gameLogic->GetAllObjects());
 		this->gameGraphics->Render(window);
 		break;
-	case SubStateOfGame::pause:
+	case SubStateOfGame::gameWaiting:
+		this->gameLogic->UpdateLogic();
 		
+		this->gameGraphics->UpdateHud(this->gameLogic->player);
+		this->gameGraphics->Update(this->gameLogic->GetAllObjects());
+		this->gameGraphics->Render(window);
+		break;
+	case SubStateOfGame::pause:
+		this->gameLogic->InputControl();
+		this->gameGraphics->Update(this->gameLogic->GetAllObjects());
+		this->gameGraphics->Render(window);
+		this->gameGraphics->RenderPause(window);
 		break;
 	case SubStateOfGame::nextLevel:
 		this->gameLogic = new GameLogic(this->player);

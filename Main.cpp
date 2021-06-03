@@ -1,10 +1,14 @@
 ﻿#include <SFML/Graphics.hpp>
 #include "GameState.h"
 #include "Utilities.h"
+#include "Player.h"
 
 int main()
 {
 	srand((unsigned)time(0));
+
+	//PlayerSingleton* playerSingleton = new PlayerSingleton();
+	//int a = PlayerSingleton::getInstance().GetLives();
 
 	StateMachine stateMachine;
 	sf::RenderWindow window(sf::VideoMode(Utilities::screenResolutionX, Utilities::screenResolutionY), "Zaba na ulicy", sf::Style::Default);

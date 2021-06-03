@@ -8,7 +8,7 @@ GameLogic::GameLogic()
 GameLogic::GameLogic(Player* player)
 {
 	this->subState = SubStateOfGame::game;
-	this->stopGenerating = false;
+	//this->stopGenerating = false;
 	this->scoreInThisRound = 0;
 	
 	this->player = player;
@@ -33,10 +33,11 @@ void GameLogic::UpdateLogic()
 
 	if (player->lives == 0 || this->frogObject->posX < this->playground->frogStandingPoints.at(0).coordinateX)
 	{
-		this->stopGenerating = true;
+		//this->stopGenerating = true;
+		this->subState = SubStateOfGame::gameWaiting;
 	}
 
-	if (this->stopGenerating == true && this->allObjects.size() == 1)
+	if (this->subState == SubStateOfGame::gameWaiting && this->allObjects.size() == 1)
 	{
 		if (player->lives == 0)
 		{
@@ -55,7 +56,7 @@ void GameLogic::UpdateLogic()
 
 		iterator.second->UpdateObject();
 
-		if (this->stopGenerating == true && iterator.second->type == "car")
+		if (this->subState == SubStateOfGame::gameWaiting && iterator.second->type == "car")
 		{
 			iterator.second->velocity++;
 		}
@@ -112,7 +113,7 @@ void GameLogic::UpdateLogic()
 
 
 
-		if (this->stopGenerating == false)
+		if (this->subState == SubStateOfGame::game)
 		{
 			for (auto& track : this->playground->tracks)
 			{
@@ -121,7 +122,7 @@ void GameLogic::UpdateLogic()
 					GenerateCar(track);
 				}
 			}
-			InputControl();
+			//InputControl();
 		}
 		
 
@@ -177,7 +178,7 @@ void GameLogic::InputControl()
 	FrogObject* frog;
 	frog = dynamic_cast<FrogObject*>(this->frogObject);
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && !this->leftKeyPressed && frog->stateOfFrog == StateOfFrog::normalStanding)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && frog->stateOfFrog == StateOfFrog::normalStanding && this->subState == SubStateOfGame::game && !this->leftKeyPressed)
 	{
 		if (this->positionOfFrogIterator > 0)
 		{
@@ -187,9 +188,9 @@ void GameLogic::InputControl()
 			//this->player->score++;
 		}
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKeyPressed)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && frog->stateOfFrog == StateOfFrog::normalStanding && this->subState == SubStateOfGame::game && !this->rightKeyPressed)
 	{
-		if (this->positionOfFrogIterator < this->playground->frogStandingPoints.size()-1 && frog->stateOfFrog == StateOfFrog::normalStanding)
+		if (this->positionOfFrogIterator < this->playground->frogStandingPoints.size()-1)
 		{
 			this->positionOfFrogIterator++;
 			//this->frogObject->SetPosX(this->playground->frogStandingPoints.at(this->positionOfFrogIterator).coordinateX);
@@ -198,6 +199,26 @@ void GameLogic::InputControl()
 		}
 	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && this->subState == SubStateOfGame::game && !this->escapeKeyPressed)
+	{
+		this->subState = SubStateOfGame::pause;
+		this->escapeKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && this->subState == SubStateOfGame::pause && !this->escapeKeyPressed)
+	{
+		this->subState = SubStateOfGame::game;
+		this->escapeKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
+		for (auto& track : this->playground->tracks)
+		{
+			if (track.timer.getElapsedTime().asMilliseconds() > 3000)
+			{
+				track.randomNumber = rand() % 1500 + 300;
+				track.timer.restart();
+			}	
+		}
+	}
+
+	this->escapeKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape);
 	this->leftKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left);
 	this->rightKeyPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right);
 }
@@ -221,7 +242,7 @@ bool GameLogic::IsTimeToGenerateCar(Track* track)
 	if (track->elapsedTime.asMilliseconds() > track->randomNumber)
 	{
 		track->timer.restart();
-		track->randomNumber = rand() % 5000 + 1000;
+		track->randomNumber = rand() % 5000 + 800;
 		return true;
 	}	
 	else

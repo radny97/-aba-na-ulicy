@@ -15,7 +15,7 @@ public:
 	GameLogic(Player* player);
 	void UpdateLogic();
 	std::unordered_map<int, Object*> GetAllObjects();
-	void UpdateCar();
+	//void UpdateCar();
 	void AddCarToDeleteListIfItMakeConditions(Object* car);
 	bool IsTimeToGenerateCar(Track* track);
 	void GenerateCar(Track track);
@@ -40,12 +40,15 @@ private:
 	sf::Time elapsedTime;
 
 	bool stopGenerating;
-	bool leftKeyPressed;
-	bool rightKeyPressed;
+	
 	int positionOfFrogIterator;
 
 	int scoreInThisRound;
 	int scoreInPreviousRound;
 
 	SubStateOfGame subState;
+
+	bool leftKeyPressed;
+	bool rightKeyPressed;
+	bool escapeKeyPressed;
 };

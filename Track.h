@@ -11,7 +11,7 @@ public:
 		this->endOfTrack = end;
 		this->fromDownToUp = direction;
 		timer.restart();
-		this->randomNumber = rand() % 5000 + 1000;
+		this->randomNumber = rand() % 1000;
 	};
 
 	Point beginingOfTrack;

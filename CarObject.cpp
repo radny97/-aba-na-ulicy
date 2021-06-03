@@ -13,7 +13,7 @@ void CarObject::UpdateObject()
 
 	//losowanie zmiany prêdkoœci 
 	this->elapsedTime = this->timer.getElapsedTime();
-	if (this->collisional == false && this->elapsedTime.asMilliseconds() > 500)
+	if (this->collisional == true && this->elapsedTime.asMilliseconds() > 1300)
 	{
 		int random = rand() % 30;
 		int parameter = 6 - this->velocity; //wspó³czynnik
@@ -36,7 +36,7 @@ void CarObject::UpdateObject()
 		this->timerForCollisions.restart();
 		this->temporaryNonCollisional = false;
 	}
-	this->elapsedTimeForCollisions = this->timer.getElapsedTime();
+	this->elapsedTimeForCollisions = this->timerForCollisions.getElapsedTime();
 	if (this->collisional == false && this->elapsedTimeForCollisions.asMilliseconds() > 50)
 	{
 		this->collisional = true;

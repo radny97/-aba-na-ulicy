@@ -11,6 +11,7 @@ GameGraphics::GameGraphics()
 		this->livesSprites.push_back(live);
 	}
 	this->scoreText = new ScoreText();
+	this->pauseScreenSprite = new PauseScreenSprite();
 }
 
 void GameGraphics::SetPlaygroundGraphics(PlaygroundLogic* playgroundLogic)
@@ -167,4 +168,9 @@ void GameGraphics::Render(sf::RenderWindow* window)
 	{
 		window->draw(*iteratorObjectSprites.second);
 	}
+}
+
+void GameGraphics::RenderPause(sf::RenderWindow* window)
+{
+	window->draw(*this->pauseScreenSprite);
 }
